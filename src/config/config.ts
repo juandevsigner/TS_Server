@@ -36,8 +36,7 @@ export abstract class ConfigServer {
       username: this.getEnviroment("DB_USER"),
       password: this.getEnviroment("DB_PASSWORD"),
       database: this.getEnviroment("DB_DATABASE"),
-      // entities: [__dirname + "/../**/*.entity{.ts,.js}"], // Si queremos que busque fuera de un directorio y por nombre de archivo y extensión
-      entities: [__dirname + "entities/*.entity{.ts,.js}"],
+      entities: [__dirname + "/../**/*.entity{.ts,.js}"],
       migrations: [__dirname + "../../migrations/*{.ts, .js}"],
       synchronize: true,
       logging: false,
