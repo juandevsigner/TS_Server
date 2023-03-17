@@ -3,7 +3,6 @@ import morgan from "morgan";
 import cors from "cors";
 import { UserRouter } from "./user/user.router";
 import { ConfigServer } from "./config/config";
-import { DataSource } from "typeorm";
 import "reflect-metadata";
 
 class ServerBootstrap extends ConfigServer {
@@ -23,14 +22,6 @@ class ServerBootstrap extends ConfigServer {
 
   routers(): Array<express.Router> {
     return [new UserRouter().router];
-  }
-  async dbConnect(): Promise<void> {
-    try {
-      await new DataSource(this.typeORMConfig as any).initialize();
-      console.log("*---------DB CONNECT CORRECTLY------------*");
-    } catch (error) {
-      console.log("ERROR IN DATA BASE CONNECTION");
-    }
   }
 
   public listen() {
